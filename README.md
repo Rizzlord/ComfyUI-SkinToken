@@ -87,7 +87,7 @@ Downloads the required model checkpoints from HuggingFace into `ComfyUI/models/s
 | `status` | STRING | Download result summary |
 | `models_dir` | STRING | Path to the models directory |
 
-### 🦴 SkinToken Rig TRIMESH
+### 🦴 SkinToken Rig
 
 The main rigging node. Takes a TRIMESH input and outputs a rigged mesh.
 
@@ -128,11 +128,11 @@ The main rigging node. Takes a TRIMESH input and outputs a rigged mesh.
 ## Workflow
 
 ```
-[Load 3D Model] → [TRIMESH] → [SkinToken Rig TRIMESH] → [Rigged GLB/FBX]
+[Load 3D Model] → [TRIMESH] → [SkinToken Rig] → [Rigged GLB/FBX]
 ```
 
 1. Load a 3D mesh as TRIMESH (using any mesh loader node)
-2. Connect to **SkinToken Rig TRIMESH**
+2. Connect to **SkinToken Rig**
 3. Configure skeleton template, export format, and generation params
 4. Execute — the node predicts skeleton + weights and exports through Blender
 

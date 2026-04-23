@@ -606,5 +606,5 @@ NODE_CLASS_MAPPINGS = {
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "SkinTokenDownloadModels": "SkinToken Download Models",
-    "SkinTokenRigTrimesh": "SkinToken Rig TRIMESH",
+    "SkinTokenRigTrimesh": "SkinToken Rig",
 }

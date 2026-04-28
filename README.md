@@ -111,6 +111,7 @@ The main rigging node. Takes a TRIMESH input and outputs a rigged mesh.
 | `use_postprocess` | bool | `False` | Apply voxel-based skin postprocessing |
 | `group_per_vertex` | int | `4` | Max bone influences per vertex |
 | `bottom_center_origin` | bool | `False` | Set skeleton origin to bottom-center of mesh |
+| `smooth_angle` | float | `55.0` | Angle threshold for shade smooth |
 | `skeleton_template` | dropdown | `Keep model names` | Bone naming convention |
 | `top_k` | int | `5` | Top-K sampling for generation |
 | `top_p` | float | `0.95` | Nucleus sampling threshold |

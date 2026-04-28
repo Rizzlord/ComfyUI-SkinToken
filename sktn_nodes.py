@@ -295,11 +295,12 @@ def _run_headless_blender(op: str, payload: dict[str, Any]) -> Any:
     return response
 
 
-def _export_asset(asset: Any, output_path: Path, use_transfer: bool, group_per_vertex: int, bottom_center_origin: bool = False) -> str:
+def _export_asset(asset: Any, output_path: Path, use_transfer: bool, group_per_vertex: int, bottom_center_origin: bool = False, smooth_angle: float = 55.0) -> str:
     backend = _select_blender_backend()
     kwargs = {
         "group_per_vertex": group_per_vertex,
         "bottom_center_origin": bottom_center_origin,
+        "smooth_angle": smooth_angle,
         "export_yup": use_transfer,
     }
 
@@ -537,6 +538,7 @@ class SkinTokenRigTrimesh:
                 "use_postprocess": ("BOOLEAN", {"default": False}),
                 "group_per_vertex": ("INT", {"default": 4, "min": 1, "max": 32}),
                 "bottom_center_origin": ("BOOLEAN", {"default": False}),
+                "smooth_angle": ("FLOAT", {"default": 55.0, "min": 0.0, "max": 180.0, "step": 1.0}),
                 "skeleton_template": (SKELETON_TEMPLATE_LABEL_CHOICES, {"default": SKELETON_TEMPLATE_LABELS[SKELETON_TEMPLATE_KEEP]}),
                 "top_k": ("INT", {"default": 5, "min": 1, "max": 200}),
                 "top_p": ("FLOAT", {"default": 0.95, "min": 0.1, "max": 1.0, "step": 0.01}),
@@ -564,6 +566,7 @@ class SkinTokenRigTrimesh:
         use_postprocess: bool,
         group_per_vertex: int,
         bottom_center_origin: bool,
+        smooth_angle: float,
         skeleton_template: str,
         top_k: int,
         top_p: float,
@@ -594,6 +597,7 @@ class SkinTokenRigTrimesh:
             use_transfer=use_transfer,
             group_per_vertex=group_per_vertex,
             bottom_center_origin=bottom_center_origin,
+            smooth_angle=smooth_angle,
         )
         output_mesh = _load_output_trimesh(output_path)
         return (output_mesh, str(output_path), generated_asset, backend)
